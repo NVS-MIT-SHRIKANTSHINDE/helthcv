@@ -1,7 +1,9 @@
 ﻿tensorflow
 Flask
-opencv-python==4.5.5.64
+opencv-contrib-python==4.9.0.80
+opencv-python==4.9.0.80
+opencv-python-headless==4.9.0.80
 numpy
 werkzeug
 keras
-libgl1-mesa-glx
+

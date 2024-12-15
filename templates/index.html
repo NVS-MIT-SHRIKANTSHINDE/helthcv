@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background: linear-gradient(to bottom, #f0f4f8, #d9e6f2);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2.5rem;
+            color: #0056a6;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form Styling */
+        form {
+            background: #fff;
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+
+        button {
+            background: #0056a6;
+            color: white;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: #0078d7;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Unique Hover Effects for Form */
+        form:hover {
+            background: #f9fbfc;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            form {
+                width: 90%;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Skin Analysis Tool</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Upload an Image:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <h1>Skin Disease Image Classification</h1>
+    <div class="container">
+        <div class="card">
+            <h3>AK (Actinic Keratosis)</h3>
+            <p>A precancerous area of thick, scaly, or crusty skin caused by sun damage. May develop into squamous cell carcinoma if untreated.</p>
+        </div>
+    
+        <div class="card">
+            <h3>BCC (Basal Cell Carcinoma)</h3>
+            <p>The most common type of skin cancer, presenting as a pearly bump or a red patch. It grows slowly and rarely spreads to other parts of the body.</p>
+        </div>
+    
+        <div class="card">
+            <h3>BKL (Benign Keratosis-like Lesion)</h3>
+            <p>Non-cancerous skin growths often found on the face, chest, or back. These lesions are typically harmless but can be mistaken for skin cancer.</p>
+        </div>
+    
+        <div class="card">
+            <h3>DF (Dermatofibroma)</h3>
+            <p>A benign tumor of the skin, often appearing as a small, firm, brown or pink bump. It is generally harmless but can be mistaken for other skin conditions.</p>
+        </div>
+    
+        <div class="card">
+            <h3>MEL (Melanoma)</h3>
+            <p>A dangerous type of skin cancer that can develop from a mole or appear suddenly. It has irregular borders, multiple colors, and can spread to other parts of the body.</p>
+        </div>
+    
+        <div class="card">
+            <h3>NV (Nevi)</h3>
+            <p>Commonly known as moles, these are benign growths of melanocytes. Most are harmless, but some can develop into melanoma.</p>
+        </div>
+    
+        <div class="card">
+            <h3>SCC (Squamous Cell Carcinoma)</h3>
+            <p>A type of skin cancer that typically appears as a red, scaly patch or a firm bump. It can spread to other parts of the body if not treated promptly.</p>
+        </div>
+    
+        <div class="card">
+            <h3>VASC (Vascular Lesion)</h3>
+            <p>Lesions caused by abnormalities in blood vessels. These can appear as red or purple spots and are typically benign, though some may require treatment.</p>
+        </div>
+    </div>
+    
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <label for="file">Upload an image:</label>
+        <input type="file" name="file" id="file" accept="image/*">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

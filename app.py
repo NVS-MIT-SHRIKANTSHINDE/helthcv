@@ -4,10 +4,17 @@ import numpy as np
 import os
 from werkzeug.utils import secure_filename
 from keras.models import load_model
-
+import gdown
 # Load Keras model and labels
-model = load_model("models/keras_Model.h5", compile=False)
-class_names = open("labels.txt", "r").readlines()
+# Download the model from Google Drive
+file_id = "18g6wdMpRS81GXpqIDY4PazCpXy_apUiz"  # Your file ID
+output = "keras_Model.h5"  # Name of the downloaded file
+
+# Construct the Google Drive download URL
+gdown.download(f"https://drive.google.com/uc?export=download&id={file_id}", output, quiet=False)
+
+# Load the model
+model = load_model(output, compile=False)
 
 # Set the upload folder for Streamlit
 UPLOAD_FOLDER = 'static/uploads/'

@@ -130,11 +130,11 @@ def skin_pore_detection(image_path):
 
 
 # Import necessary libraries
-from flask import Flask, render_template, request
+#from flask import Flask, render_template, request
 from keras.models import load_model
-import numpy as np
-import cv2
-import os
+#import numpy as np
+#import cv2
+#import os
 
 
 # Load the Keras model and labels

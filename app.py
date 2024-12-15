@@ -12,7 +12,7 @@ output = "keras_Model.h5"  # Name of the downloaded file
 
 # Construct the Google Drive download URL
 gdown.download(f"https://drive.google.com/uc?export=download&id={file_id}", output, quiet=False)
-
+class_names = open("labels.txt", "r").readlines()
 # Load the model
 model = load_model(output, compile=False)
 

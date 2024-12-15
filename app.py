@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from keras.models import load_model
 
 # Load Keras model and labels
-model = load_model("/mount/src/helthcv/keras_Model.h5", compile=False)
+model = load_model("models/keras_Model.h5", compile=False)
 class_names = open("labels.txt", "r").readlines()
 
 # Set the upload folder for Streamlit

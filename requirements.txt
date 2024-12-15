@@ -1,6 +1,6 @@
 streamlit
 opencv-python
-tensorflow==2.12
+tensorflow==2.14
 numpy
 werkzeug
 Pillow

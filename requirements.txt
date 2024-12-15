@@ -4,3 +4,4 @@ opencv-python==4.5.5.64
 numpy
 werkzeug
 keras
+libgl1-mesa-glx

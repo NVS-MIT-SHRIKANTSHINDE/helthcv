@@ -110,13 +110,7 @@ def skin_moisture_visualization(image_path):
     cv2.imwrite(moisture_path, enhanced)  # Save the moisture visualization image
     return {'output_image': moisture_path}
 
-# Function for skin pore detection
-def skin_pore_detection(image_path):
-    image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)  # Read image in grayscale
-    _, thresh = cv2.threshold(image, 100, 255, cv2.THRESH_BINARY_INV)  # Apply thresholding
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # Find contours
-    pore_count = len(contours)  # Count the number of pores
-    return {'count': pore_count}
+
 
 # Streamlit app UI
 st.title('Skin Analysis and Prediction')  # App title
@@ -143,7 +137,7 @@ if file:  # If a file is uploaded
         'burn_severity': burn_severity_estimation(filepath),
         'scar_detection': scar_detection(filepath),
         'moisture_visualization': skin_moisture_visualization(filepath),
-        'pore_detection': skin_pore_detection(filepath)
+    
     }
 
     # Display analysis results

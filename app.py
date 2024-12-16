@@ -71,14 +71,6 @@ def uv_damage_detection(image_path):
     cv2.imwrite(uv_path, enhanced)  # Save the UV damage analysis image
     return {'output_image': uv_path}
 
-# Function to count moles in the image
-def mole_counter(image_path):
-    image = cv2.imread(image_path)  # Read the uploaded image
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # Convert image to grayscale
-    _, thresh = cv2.threshold(gray, 75, 255, cv2.THRESH_BINARY_INV)  # Apply thresholding
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # Find contours
-    mole_count = len(contours)  # Count the number of contours (moles)
-    return {'count': mole_count}
 
 # Function for skin tone analysis
 def skin_tone_analysis(image_path):
@@ -147,7 +139,6 @@ if file:  # If a file is uploaded
         'segmentation': skin_segmentation(filepath),
         'texture_analysis': skin_texture_analysis(filepath),
         'uv_damage': uv_damage_detection(filepath),
-        'mole_counter': mole_counter(filepath),
         'tone_analysis': skin_tone_analysis(filepath),
         'burn_severity': burn_severity_estimation(filepath),
         'scar_detection': scar_detection(filepath),

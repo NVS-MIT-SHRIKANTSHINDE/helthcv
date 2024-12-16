@@ -1,8 +1,8 @@
-0 AK
-1 BCC
-2 BKL
-3 DF
-4 MEL
-5 NV
-6 SCC
-7 VASC
+0 AK – Actinic Keratosis
+1 BCC – Basal Cell Carcinoma
+2 BKL – Benign Keratosis-like Lesion
+3 DF – Dermatofibroma
+4 MEL – Melanoma
+5 NV – Nevus (commonly refers to a mole)
+6 SCC – Squamous Cell Carcinoma
+7 VASC – Vascular (typically refers to vascular lesions or vascular diseases)

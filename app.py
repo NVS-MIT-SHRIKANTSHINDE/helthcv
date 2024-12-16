@@ -98,19 +98,17 @@ def burn_severity_estimation(image_path):
 # Function for scar detection
 def scar_detection(image_path):
     image = cv2.imread(image_path)  # Read the uploaded image
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # Convert image to grayscale
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)  # Convert to HSV color space
+    lower_skin = np.array([0, 20, 70], dtype=np.uint8)  # Define lower bound for skin color
+    upper_skin = np.array([20, 255, 255], dtype=np.uint8)  # Define upper bound for skin color
+    mask = cv2.inRange(hsv, lower_skin, upper_skin)  # Create a mask for skin regions
+    segmented = cv2.bitwise_and(image, image, mask=mask)  # Apply the mask to the image
+    gray = cv2.cvtColor(segmented, cv2.COLOR_BGR2GRAY)  # Convert image to grayscale
     edges = cv2.Canny(gray, 50, 150)  # Apply edge detection
     scar_path = os.path.join(UPLOAD_FOLDER, 'scar.jpg')  # Save path for scar detection image
     cv2.imwrite(scar_path, edges)  # Save the scar detection image
     return {'output_image': scar_path}
 
-# Function for detecting skin cracks
-def skin_crack_detection(image_path):
-    image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)  # Read image in grayscale
-    cracks = cv2.Canny(image, 100, 200)  # Apply edge detection
-    crack_path = os.path.join(UPLOAD_FOLDER, 'cracks.jpg')  # Save path for crack detection image
-    cv2.imwrite(crack_path, cracks)  # Save the crack detection image
-    return {'output_image': crack_path}
 
 # Function for visualizing skin moisture
 def skin_moisture_visualization(image_path):
@@ -153,7 +151,6 @@ if file:  # If a file is uploaded
         'tone_analysis': skin_tone_analysis(filepath),
         'burn_severity': burn_severity_estimation(filepath),
         'scar_detection': scar_detection(filepath),
-        'crack_detection': skin_crack_detection(filepath),
         'moisture_visualization': skin_moisture_visualization(filepath),
         'pore_detection': skin_pore_detection(filepath)
     }
